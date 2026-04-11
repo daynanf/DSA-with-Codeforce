@@ -2,14 +2,17 @@ t=int(input())
 while t:
     t-=1
     nums=list(map(int,input().split()))
-    nM=min(nums)
-    nMX=max(nums)
+    a=min(nums)
+    c=max(nums)
     s=sum(nums)
-    m=s-nM-nMX
-    if nM == nMX:
+    b=s-a-c
+    if a == c :
         print("YES")
         continue
-    ans=(nMX-nM)/nM + (m-nM)/nM
+    if not (b%a==c%a==0):
+        print("NO")
+        continue
+    ans=(c-a)/a + (b-a)/a
     if ans>3:
         print("NO")
         continue
