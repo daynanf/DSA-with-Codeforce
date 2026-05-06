@@ -1,13 +1,20 @@
-t=int(input())
-while t:
-    t-=1
-    x ,m=list(map(int,input().split()))
-    nums=list(map(int,input().split()))
-    modes=[(nums[i]+i)%m for i in range(len(nums))]
-    m=min(modes)
-    mx=max(modes)
-    if m==0:
-        if modes.count(m)==x:
-            print("YES")
-        else:
-            
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    
+    forbidden = set()
+    for i in range(1, n + 1):
+        b = (a[i-1] + i) % m
+        forbidden.add((m - b) % m)
+        if len(forbidden) == m:
+            print("NO")
+            return
+    
+    print("YES")
+
+t = int(input())
+for _ in range(t):
+    solve()
